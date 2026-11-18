@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#082b20">
+<title>Cricc Live | Cricket Scores & News</title>
+<style>
+:root{--green:#087a45;--dark:#082b20;--ink:#15251d;--muted:#65756c;--bg:#f3f6f4;--line:#e1e9e4;--white:#fff;--lime:#b9f36b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(115deg,#06271c,#105c38);color:white;padding:18px max(18px,calc((100% - 1100px)/2))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:25px;font-weight:900;letter-spacing:-1px}.brand span{color:var(--lime)}.tag{font-size:12px;color:#d1e8da}
+button{font:inherit;cursor:pointer;border:0}.lang{border:1px solid #ffffff70;background:#ffffff12;color:white;border-radius:9px;padding:8px 12px;font-weight:700}
+nav{display:flex;gap:7px;overflow:auto;padding:13px 0 0}nav button{white-space:nowrap;color:#d7e9df;background:transparent;padding:9px 13px;border-radius:8px;font-weight:700}nav button.active,nav button:hover{background:var(--lime);color:#18351f}
+main{max-width:1100px;margin:22px auto;padding:0 16px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 13px}.section-head h1{font-size:22px;margin:0}.live-dot{font-size:11px;color:#b42318;font-weight:800}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}.stack{display:grid;gap:13px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 3px 12px #092b2010}.match-top{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;font-weight:700}.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin:16px 0}.team:last-child{text-align:right}.flag{font-size:20px}.team-name{font-weight:800}.score{font-size:24px;font-weight:900;letter-spacing:-.7px}.overs{font-size:12px;color:var(--muted)}.vs{color:#8b9991;font-weight:800}.status{background:#fff2e9;color:#a74313;border-radius:7px;padding:5px 8px;font-size:11px;font-weight:800}.demo{font-size:11px;color:#87631a;background:#fff8df;border:1px solid #f3e6b5;border-radius:8px;padding:8px;margin-top:12px}.link{color:var(--green);font-weight:800;background:transparent;padding:4px 0}.side-title{font-size:17px;font-weight:850;margin:0 0 10px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick div{background:#eff7f1;border-radius:10px;padding:12px;text-align:center;font-weight:800}.quick span{display:block;font-size:22px}.news-item{padding:11px 0;border-bottom:1px solid var(--line)}.news-item:last-child{border:0}.muted{color:var(--muted);font-size:12px}.hidden{display:none!important}footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 15px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.brand{font-size:22px}main{margin-top:17px}.score{font-size:21px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div><div class="brand">🏏 CRICC <span>LIVE</span></div><div class="tag" data-en="Your Cricket. Your Live Score." data-mr="तुमचे क्रिकेट. तुमचा लाईव्ह स्कोअर.">Your Cricket. Your Live Score.</div></div><button class="lang" id="langBtn">मराठी</button></div>
+<nav id="nav"><button class="active" data-page="live" data-en="Live" data-mr="लाईव्ह">Live</button><button data-page="upcoming" data-en="Upcoming" data-mr="आगामी">Upcoming</button><button data-page="results" data-en="Results" data-mr="निकाल">Results</button><button data-page="news" data-en="News" data-mr="बातम्या">News</button></nav></header>
+<main>
+<div class="section-head"><h1 id="pageTitle">Live Matches</h1><span class="live-dot">● DEMO DATA</span></div>
+<div id="livePage" class="grid">
+<section class="stack">
+<article class="card"><div class="match-top"><span>INTERNATIONAL · T20</span><span class="status">SAMPLE SCORE</span></div><div class="teams"><div class="team"><div class="team-name">🇮🇳 India</div><div class="score">185/4</div><div class="overs">18.2 overs</div></div><div class="vs">VS</div><div class="team"><div class="team-name">🇦🇺 Australia</div><div class="score">142/6</div><div class="overs">16.0 overs</div></div></div><div class="muted">Illustrative match card · Not a live match feed</div><div class="demo">Demo only: scores below are sample data and do not update automatically.</div><button class="link" onclick="showScore()">View scorecard →</button></article>
+<article class="card"><div class="match-top"><span>INDIAN PREMIER LEAGUE · T20</span><span class="status">SAMPLE RESULT</span></div><div class="teams"><div class="team"><div class="team-name">🇮🇳 Mumbai</div><div class="score">167/5</div><div class="overs">20 overs</div></div><div class="vs">VS</div><div class="team"><div class="team-name">🇮🇳 Chennai</div><div class="score">170/4</div><div class="overs">19.2 overs</div></div></div><div class="muted">Illustrative result · Not official match data</div></article>
+<div id="scorecard" class="card hidden"><div class="section-head"><b>Sample scorecard</b><button class="link" onclick="document.getElementById('scorecard').classList.add('hidden')">Close ✕</button></div><p><b>India 185/4</b> (18.2 overs)</p><p>Sample batting and bowling details will appear here when a verified cricket data API is connected.</p></div>
+</section>
+<aside class="stack"><div class="card"><h2 class="side-title">🏆 Cricket formats</h2><div class="quick"><div><span>🏏</span>T20</div><div><span>🌍</span>ODI</div><div><span>🏆</span>Test</div></div></div>
+<div class="card"><h2 class="side-title" data-en="Latest cricket news" data-mr="ताज्या क्रिकेट बातम्या">Latest cricket news</h2><div class="news-item"><b>Cricket news section coming soon</b><div class="muted">Verified news feed will be connected here.</div></div><div class="news-item"><b>Match previews & analysis</b><div class="muted">सामन्यांचे विश्लेषण लवकरच</div></div></div></aside>
+</div>
+<div id="otherPage" class="card hidden"><h2 id="otherTitle">Coming soon</h2><p class="muted" id="otherText">This section is being prepared.</p></div>
+</main>
+<footer>© 2026 Cricc Live · English + मराठी<br>Independent cricket fan project. Not affiliated with Cricbuzz.</footer>
+<script>
+let marathi=false;
+const titles={live:['Live Matches','लाईव्ह सामने'],upcoming:['Upcoming Matches','आगामी सामने'],results:['Match Results','सामन्यांचे निकाल'],news:['Cricket News','क्रिकेट बातम्या']};
+const descriptions={upcoming:['Fixtures and match timings will appear here.','सामन्यांचे वेळापत्रक येथे दिसेल.'],results:['Completed match results will appear here.','पूर्ण झालेल्या सामन्यांचे निकाल येथे दिसतील.'],news:['Verified cricket headlines will appear here after a news source is connected.','विश्वसनीय क्रिकेट बातम्या येथे दिसतील.']};
+document.getElementById('langBtn').onclick=()=>{marathi=!marathi;document.getElementById('langBtn').textContent=marathi?'English':'मराठी';document.querySelectorAll('[data-en]').forEach(el=>el.textContent=el.dataset[marathi?'mr':'en']);const active=document.querySelector('nav .active');if(active)selectPage(active.dataset.page)};
+function selectPage(page){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('pageTitle').textContent=titles[page][marathi?1:0];document.getElementById('livePage').classList.toggle('hidden',page!=='live');document.getElementById('otherPage').classList.toggle('hidden',page==='live');if(page!=='live'){document.getElementById('otherTitle').textContent=titles[page][marathi?1:0];document.getElementById('otherText').textContent=descriptions[page][marathi?1:0]}}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>selectPage(b.dataset.page));
+function showScore(){document.getElementById('scorecard').classList.remove('hidden');document.getElementById('scorecard').scrollIntoView({behavior:'smooth',block:'nearest'})}
+</script>
+</body></html>
